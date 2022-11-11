@@ -148,7 +148,7 @@ public class Vista extends JFrame {
 		
 		lblEliminarConsulta = new JLabel("Eliminar registro (id)");
 		lblEliminarConsulta.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblEliminarConsulta.setBounds(818, 270, 138, 35);
+		lblEliminarConsulta.setBounds(818, 269, 138, 35);
 		contentPane.add(lblEliminarConsulta);
 		
 		txtEliminar = new JTextField();
@@ -178,5 +178,11 @@ public class Vista extends JFrame {
 		btnVideos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnVideos.setBounds(459, 417, 460, 44);
 		contentPane.add(btnVideos);
+		
+		JLabel lblNewLabel_1 = new JLabel("cliente//videos");
+		lblNewLabel_1.setToolTipText("");
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(818, 153, 96, 20);
+		contentPane.add(lblNewLabel_1);
 	}
 }

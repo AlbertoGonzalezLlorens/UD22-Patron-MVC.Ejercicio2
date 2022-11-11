@@ -20,13 +20,12 @@ public class ControladorVideos implements ActionListener {
 	public ControladorVideos (Connection conexion, ModeloConexion modeloconexion, VistaVideos vista) {
 		this.modeloconexion=modeloconexion;
 		this.vista = vista;
-		this.conexion = modeloconexion.createConexion();
+		this.conexion = conexion;
 		this.vista.btnInsertarValores.addActionListener(this);
 		this.vista.btnVerelementos.addActionListener(this);
-		this.vista.btnConsulta.addActionListener(this);
-		this.vista.btnEliminar.addActionListener(this);
+		this.vista.btnConexion.addActionListener(this);
 		this.vista.btnUpdate.addActionListener(this);
-
+		this.vista.btnEliminar.addActionListener(this);
 		
 	}
 	
@@ -35,7 +34,7 @@ public class ControladorVideos implements ActionListener {
 		vista.pack();
 		vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vista.setLocationRelativeTo(null);
-		vista.setBounds(500, 500, 800, 600);
+		vista.setBounds(500, 500, 800, 550);
 		vista.setVisible(true);
 		
 	}
@@ -46,16 +45,16 @@ public class ControladorVideos implements ActionListener {
 			
 		}
 		else if(vista.btnVerelementos==event.getSource()) {
-			vista.textPane.setText(modeloconexion.getValues(conexion, "ejercicio2", "video"));
+			vista.textPane.setText(modeloconexion.getValuesVideos(conexion, "ejercicio2", "videos"));
 		}
-		else if(vista.btnConsulta==event.getSource()) {
-			vista.textPane.setText(modeloconexion.consulta(conexion, "ejercicio2", vista.txtConsulta.getText()));
-		}
-		else if(vista.btnEliminar==event.getSource()) {
-			modeloconexion.deleteRecord(conexion, "ejercicio2", "cliente", vista.txtEliminar.getText());
+		else if(vista.btnConexion==event.getSource()) {
+			this.conexion = modeloconexion.createConexion();
 		}
 		else if(vista.btnUpdate==event.getSource()) {
-			modeloconexion.updateRecord(conexion, "ejercicio2", "cliente", vista.textUpdate.getText());
+			modeloconexion.updateRecord(conexion, "ejercicio2", "videos", vista.textUpdate.getText());
+		}
+		else if(vista.btnEliminar==event.getSource()) {
+			modeloconexion.deleteRecord(conexion, "ejercicio2", "videos", vista.txtEliminar.getText());
 		}
 	}
 

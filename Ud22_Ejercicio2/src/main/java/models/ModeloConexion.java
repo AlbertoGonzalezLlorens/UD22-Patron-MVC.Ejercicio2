@@ -17,8 +17,8 @@ public class ModeloConexion {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conexion = DriverManager.getConnection(
-					"jdbc:mysql://containers-us-west-120.railway.app:7580?useTimezone=true&serverTimezone=UTC", "root",
-					"19VPjAlwKS3l22fWYuf6");
+					"jdbc:mysql://containers-us-west-116.railway.app:6848?useTimezone=true&serverTimezone=UTC", "root",
+					"VMUYVGLKT3SmprwZW4VG");
 			JOptionPane.showMessageDialog(null,"Servidor conectado");
 			return conexion;
 		} catch (SQLException | ClassNotFoundException ex) {
@@ -164,6 +164,33 @@ public class ModeloConexion {
 		}
 		return values;
 	}
+	
+	public String getValuesVideos(Connection conexion, String db, String table_name) {
+		String values = "";
+		try {
+			String Querydb = "USE " + db + ";";
+			Statement stdb = conexion.createStatement();
+			stdb.executeUpdate(Querydb);
+
+			String Query = "SELECT * FROM " + table_name;
+			Statement st = conexion.createStatement();
+			java.sql.ResultSet resultSet;
+			resultSet = st.executeQuery(Query);
+
+			while (resultSet.next()) {
+				values+=("{\nid: " + resultSet.getString("id") + "\n" + "title: " + resultSet.getString("title")
+						+ "\n" + "director: " + resultSet.getString("director") + "\n" + "cli_id: "
+						+ resultSet.getString("cli_id")+"\n}\n\n");
+			}
+			
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error en la adquisición de datos");
+		}
+		return values;
+	}
+
 
 	// -------------------------------------------------MODIFICAR
 	// REGISTROS-----------------------------------------------------------------------------------------
@@ -197,11 +224,19 @@ public class ModeloConexion {
 			java.sql.ResultSet resultSet;
 			resultSet = st.executeQuery(Query);
 
-			while (resultSet.next()) {
-				res+=("{\nid: " + resultSet.getString("id") + "\n" + "nombre: " + resultSet.getString("nombre")
-						+ "\n" + "apellido: " + resultSet.getString("apellido") + "\n" + "direccion: "
-						+ resultSet.getString("direccion") + "\n" + "dni: " + resultSet.getString("dni") + "\n"
-						+ "fecha: " + resultSet.getString("fecha")+"\n}\n\n");
+			if (comando.contains("cliente")) {
+				while (resultSet.next()) {
+					res+=("{\nid: " + resultSet.getString("id") + "\n" + "nombre: " + resultSet.getString("nombre")
+							+ "\n" + "apellido: " + resultSet.getString("apellido") + "\n" + "direccion: "
+							+ resultSet.getString("direccion") + "\n" + "dni: " + resultSet.getString("dni") + "\n"
+							+ "fecha: " + resultSet.getString("fecha")+"\n}\n\n");
+				}
+			} else if (comando.contains("videos")) {
+				while (resultSet.next()) {
+					res+=("{\nid: " + resultSet.getString("id") + "\n" + "title: " + resultSet.getString("title")
+					+ "\n" + "director: " + resultSet.getString("director") + "\n" + "cli_id: "
+					+ resultSet.getString("cli_id")+"\n}\n\n");
+				} 
 			}
 			
 		} catch (SQLException ex) {

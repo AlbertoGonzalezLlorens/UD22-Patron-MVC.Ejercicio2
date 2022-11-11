@@ -25,13 +25,12 @@ public class VistaVideos extends JFrame {
 	public JLabel lblIdCliente;
 	public JButton btnInsertarValores;
 	public JTextPane textPane;
-	public JTextField txtConsulta;
-	public JButton btnConsulta;
 	public JLabel lblEliminarConsulta;
 	public JTextField txtEliminar;
-	public JButton btnEliminar;
+	public JButton btnConexion;
 	public JTextField textUpdate;
 	public JButton btnUpdate;
+	public JButton btnEliminar;
 
 	/**
 	 * Create the frame.
@@ -92,21 +91,6 @@ public class VistaVideos extends JFrame {
 		btnInsertarValores.setBounds(485, 200, 138, 23);
 		contentPane.add(btnInsertarValores);
 		
-		txtConsulta = new JTextField();
-		txtConsulta.setToolTipText("");
-		txtConsulta.setColumns(10);
-		txtConsulta.setBounds(62, 514, 498, 20);
-		contentPane.add(txtConsulta);
-		
-		JLabel lblEscribirConsulta = new JLabel("Escribir consulta");
-		lblEscribirConsulta.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblEscribirConsulta.setBounds(62, 469, 138, 35);
-		contentPane.add(lblEscribirConsulta);
-		
-		btnConsulta = new JButton("Ejecutar consulta");
-		btnConsulta.setBounds(583, 512, 142, 23);
-		contentPane.add(btnConsulta);
-		
 		lblEliminarConsulta = new JLabel("Eliminar registro (id)");
 		lblEliminarConsulta.setFont(new Font("Calibri", Font.PLAIN, 16));
 		lblEliminarConsulta.setBounds(506, 254, 138, 35);
@@ -117,9 +101,10 @@ public class VistaVideos extends JFrame {
 		contentPane.add(txtEliminar);
 		txtEliminar.setColumns(10);
 		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(526, 338, 89, 23);
-		contentPane.add(btnEliminar);
+		btnConexion = new JButton("Conexion segundo Jframe");
+		btnConexion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnConexion.setBounds(220, 14, 197, 31);
+		contentPane.add(btnConexion);
 		
 		JLabel lblUpdateRegistroid = new JLabel("Update registro");
 		lblUpdateRegistroid.setFont(new Font("Calibri", Font.PLAIN, 16));
@@ -134,5 +119,10 @@ public class VistaVideos extends JFrame {
 		btnUpdate = new JButton("Update");
 		btnUpdate.setBounds(526, 436, 89, 23);
 		contentPane.add(btnUpdate);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEliminar.setBounds(506, 329, 138, 23);
+		contentPane.add(btnEliminar);
 	}
 }
